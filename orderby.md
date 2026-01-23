@@ -46,3 +46,12 @@ ORDER BY ProductName DESC
 ```
 ## ORDER BY Several Columns
 The following SQL statement selects all customer from the "customers" table, sorted by the "Country" and the "customername   This means this ordered by countrys but the countryname is same by the "customersName"
+
+## Using Both ASC and DESC
+The following SQL statement selects all customers  from the "customers "table, sorted ascending by the "Country" and descending by 
+the "CustomerName" column:
+```
+SELECT * FROM Customers
+ORDER BY Country ASC, CustomerName DESC;
+```
+
