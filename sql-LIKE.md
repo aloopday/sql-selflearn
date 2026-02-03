@@ -97,3 +97,49 @@ If on wildcard is specified, the phrase has to have an exact match to return a r
 SELECT * FROM Customers
 WHERE Country LIKE 'Spain';
 ```
+
+## SQL Wildcards
+
+[SQL Wildcard Characters](https://www.w3schools.com/sql/sql_wildcards.asp)
+
+A wildcard character is used to `substitute` one or more characters in a string.
+
+Wildcard characters are used with the `LIKE` operator. The 
+
+## Wild Characters
+|Symbol|Description|
+|------|-----------|
+|%     | Represents zero or more characters|
+|_    |Represents a single character|
+| []| Represents any single character within the brackets*|
+|^    | Represents any character not in the brackets *|
+|-  | Represents any single character within the specified range *|
+| {}| Represents any escaped character ** |
+
+* Not suported in PostgreSQL and MySQL databases.
+** Supported only in Oracle databases.
+
+## Using the % Wildcard 
+The `%` wildcard represents any number of characters, even zero characters.
+
+```
+SELECT * FROM Customers
+WHERE CustomerName LIKE `%es`;
+```
+## Example
+Return all customers that contains the pattern 'mer`;
+```
+SELECT * FROM Customers
+WHERE CustomerName LIKE `%mer%`
+```
+
+## Using the _ Wildcard
+The `_`wildcard represents a single character.
+It can be any character or number, but each`_` represents one, and only one 
+
+## Example
+Returns all customers with a `city` starting with any character, followed by "ondon"
+```
+SELECT * FROM Customers
+WHERE City LIKE '_ONDON`;
+```
