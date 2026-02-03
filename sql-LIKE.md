@@ -237,3 +237,38 @@ Let us check if that is correct, by using the `NOT IN ` operator
 SELECT * FROM Customers
 WHERE CustomerID NOT IN (SELECT CustomerID FROM Orders);
 ```
+## SQL Between Operator
+
+The SQL BETWEEN Operator
+THE `BETWEEN` operator selects values within a given range. The values can be numbers, text, or dates.
+The `BETWEEN` operator is inclusive: begin and end values are included.
+
+## Example
+Selects all products with a price between 10 and 20:
+```
+SELECT * FROM Products
+WHERE Price BETWEEN 10 AND 30;
+```
+## Syntax
+```
+SELECT column_name(s)
+FROM table_name
+WHERE column_name BETWEEN value1 AND value2;
+```
+
+## NOT BETWEEN
+To display the produts outside the range of the previous example, use `NOT BETWEEN`
+
+```
+SELECT * FROM Products
+WHERE Price NOT BETWEEN 10 AND 20;
+```
+
+BETWEEN with IN
+The following SQL statement selects all products with a price between 10 and 20. In addition, the CategoryID must be either 1,2, or 3.
+
+```
+SELECT * FROM Products
+WHERE Price BETWEEN 10 AND 20
+AND CategoryID IN (1,2,3);
+```
