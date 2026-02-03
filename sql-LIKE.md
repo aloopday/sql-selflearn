@@ -169,3 +169,71 @@ characters in length
 SELECT * FROM Customers
 WHERE CustomerName LIKE 'A___%';
 ```
+
+
+## Example 
+Return all customers that have "r" in the second position:
+```
+SELECT * FROM Customers
+WHERE CustomerName LIKE '_R%';
+```
+
+
+## WITHout Wildcard
+If no wildcard is specified,the phrase has to have an exact match to return a result.
+
+Microsoft Access Wildcards
+The Microsoft Access Database has some other wildcards:
+
+Symbol	Description	Example
+*	Represents zero or more characters	bl* finds bl, black, blue, and blob
+?	Represents a single character	h?t finds hot, hat, and hit
+[]	Represents any single character within the brackets	h[oa]t finds hot and hat, but not hit
+!	Represents any character not in the brackets	h[!oa]t finds hit, but not hot and hat
+-	Represents any single character within the specified range	c[a-b]t finds cat and cbt
+#	Represents any single numeric character	2#5 finds 205, 215, 225, 235, 245, 255, 265, 275, 285, and 295
+
+## SQL IN Operator
+The SQL in Operator
+The SQL In Operator 
+The `IN` operator allows you to specify multiple values in a `WHERE` clause.
+THe `IN`operator is a shorthand for multiple `OR` conditions
+
+```
+SELECT * FROM Customers
+WHERE Country IN（'German','France','UK'）;
+```
+## Syntax
+SELECT column_name(s)
+FROM table_name
+WHERE column_name IN(value1,value2,...);
+
+## NOT IN 
+By using the `NOT` keyword in front of the `IN` operator, you return all records that are `NOT` any of the values in the list 
+
+```
+SELECT * FROM Customers
+WHERE Country NOT IN ('Germany','France','uk');
+```
+
+
+IN(SELECT)
+You can also use `IN` with a subquery in the `WHERE`clause.
+
+**tips** With a subquery you can return all records from the main query that are present in the result of the subquery.
+
+## Example 
+Return all customers that have an order in the `Orders` table:
+
+```
+SELECT * FROM Customers
+WHERE CustomerID IN (SELECT CustomerID FROM Orders);
+```
+## NOT IN (SELECT)
+The result in the example above returned 74 records, that means that there are 17 customers that haven't placed any orders.
+Let us check if that is correct, by using the `NOT IN ` operator
+
+```
+SELECT * FROM Customers
+WHERE CustomerID NOT IN (SELECT CustomerID FROM Orders);
+```
