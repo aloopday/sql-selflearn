@@ -272,3 +272,136 @@ SELECT * FROM Products
 WHERE Price BETWEEN 10 AND 20
 AND CategoryID IN (1,2,3);
 ```
+## BETWEEN Text Values
+The following SQL statement selects all prodcuts with a ProductName alphabetically between Carnarvon Tigers and Mozzarella di Giovanni
+
+```
+SELECT * FROM Products
+WHERE ProductName BETWEEN 'Carnarvon Tigers' AND 'Mozzarella di Giovanni'
+ORDER BY ProductName;
+```
+## The following SQL statement selects all products with a ProductName  between Carnarvon Tigers and Chef Anton's Cajun Seasoning:
+```
+SELECT * FROM Products
+WHERE ProductName BETWEEN "Carnarvon Tigers" AND "Chef Anton's Cajun Seasoning"
+ORDER BY ProductName
+```
+
+## NOT BETWEEN Text Values
+The following SQL statement selects all products with a ProductName not between Carnarvon Tigers and Mozzarella di Giovanni:
+```
+SELECT * FROM Products
+WHERE ProductsName NOT BETWEEN 'carnarvon Tigers ' AND 'Mozzarella di Giovanni'
+ORDER BY ProductName;
+```
+## Between Dates
+The following SQL statement selects all orders with an OrderDate between '01-JULY-1996' and '31-july-1998'
+```
+SELECT * FROM Orders
+WHERE OrderDate BETWEEN #07/01/1996# AND #07/31/1996#
+```
+## SQL Aliases
+[SQL Aliases](https://www.w3schools.com/sql/sql_alias.asp)
+
+## SQL Aliases
+SQL aliases are used to give a table, or a column in a table, a 
+temporaty name.
+Aliases are often used to make column names more readable.
+An alias only exists for the duration of that query.
+An alias is created with the `AS` keyword.
+
+```
+SELECT CustomerID AS ID
+FROM Customers;
+```
+
+## AS is Optional
+Actually, in most database languages, you can skip the and get the same result:
+## example
+```
+SELECT CustomerID ID
+FROM Customers;
+```
+
+## Syntax
+When alias is used on column:
+```
+SELECT column_name AS alias_name
+FROM table_name;
+```
+When alias is used on table:
+```
+SELECT column_name(s)
+FROM table_name AS alias_name;
+```
+## Alias for Columns
+The following SQL statement creates two aliases,one for the CustomerID column and one for the CustomerName column:
+```
+SELECT CustomerID AS ID, CustomerName AS Customer
+FROM Customers;
+```
+## Using Aliases With a Space Character
+If you want your alias to contain one or more spaces, like "My Great Products",surround your alias with square brackets or double quotes.
+
+```
+SELECT ProductName AS [My Great Produts]
+FROM Products
+```
+
+## or Using "double quotes" for aliases with space characters:
+```
+SELECT ProductName AS "My Great Products"
+FROM Products
+```
+***NOTE*** Some database systems allows both [] and "", and some only allows one of them.
+
+## Concatenate Columns
+ The following SQL statement creates an alias named "Address" that combine four columns 
+ ```
+ SELECT CustomerName, Address + ', ' +PostalCode + ' ' + City + ', ' + Country AS
+ Address
+
+ FROM Customers;
+ ```
+
+ ## MySQL Example
+ ```
+ SELECT CustomerName, CONCAT(Address, ', ',PostalCode, ', ',City,', ',Country)
+ AS Address
+ FROM Customers;
+ ```
+ ## Oracle Example
+ ```
+ SELECT CustomerName, (Address || ', ' || PostalCode || ' '|| City || ',' ||Country)
+ AS Address
+ FROM Customers;
+ ```
+ ## Alias for Tables
+ The same rules applies when you want to use an alias for a table.
+ 
+ Example 
+ Refer to the Customers table as Persons instead:
+ ```
+ SELECT * FROM Customers AS Persons;
+
+ 
+ ```
+
+ ## Useful
+ It might seem useless to use aliases on tables, but when you are using more than one table in your queries, it can make the SQL statement shorter.
+ The following SQL statement selects all the orders from the customer with CustomerID =4 (Around the Horn). We use the "Customers" and "Orders" tables, and give them the table aliases of "c" and "o" respectively (Here we use aliases to make the SQL shorter):
+
+ SQL Statement
+ ```
+ SELECT o.OrderID, o.OrderID, c.CusomerName
+ FROM Customers AS c, Orders AS o
+ WHERE c.CustomerName='Around the Horn' AND c.CustomerID=o.CustomerID;
+ ```
+
+ ## Aliases can be useful when:
+ - There are more than one table involved in a query
+ - Functinos are used in the query
+ - Column names are big or not very readable
+ - Two or more columns are combined together
+ ![alt text](image.png)
+ 
