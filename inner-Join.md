@@ -73,3 +73,76 @@ ORDER BY Customers.CustomerName;
 
 ## SQL RIGHT JOIN KEYWORD
 [right join keyword](https://www.w3schools.com/sql/sql_join_right.asp)
+
+## SQL RIGHT JOIN Keyword
+The `RIGHT JOIN` keyword returns all records from the right table(table2),and the matching records from the left table(table1). The result is o records form the left isde, if there is no match.
+
+## RIGHT JOIN Syntax
+```
+SELECT column_name(s)
+FROM table1
+RGITH JOIN table2
+ON table1.column_name =table2.column_name;
+```
+## ***NOTE*** In some databases `RIGHT JOIN` IS called 
+`RIGHT OUTER JOIN`.
+![alt text](image-2.png)
+
+## sql RIGHT JOIN Example
+The following SQL statement will return all employees, and any orders they might have placed
+```
+SELECT Orders.OrderID, Employees.LastName,Employees.Firstname
+FROM Orders
+RIGHT JOIN Employees
+ON Orders.EmployeeID = Employees.EmployeeID
+ORDER BY Orders.OrderID;
+```
+**NOTE** The `RIGHT JOIN` keyword returns all records from the right table(Employees), even if there are no matches in the left table(Orders).
+## SQL FULL OUTER JOIN Keyword
+[full join](https://www.w3schools.com/sql/sql_join_full.asp)
+
+The `FULL OUTER JOIN` keyword returns all records when there is a match in left (table1) and right (table2) table records.
+
+Tips: `Full OUTER JOIN` and `FULL JOIN` are  the same.
+
+## FULL OUTER JOIN SYntax
+```
+SELECT column_name(S)
+FROM table1
+FULL OUTER JOIN table2
+ON table1.column_name =table2.column_name
+WHERE condition;
+```
+![alt text](image-3.png)
+
+**NOTE** ```FULL OUTER JOIN``` can potentially return very large result-sets@
+
+## SQL FULL OUTER JOIN Example
+The following SQL statement selects all customers , and all orders
+```
+SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+FULL OUTER JOIN Orders ON Customers.CustomerID=Orders.CustomerID
+ORDER BY Customers.CustomerName;
+```
+## SQL SELF JOIN
+[sql self join](https://www.w3schools.com/sql/sql_join_self.asp)
+
+A self join is a regular join,but the table is joined with itself.
+
+## Self Join Syntax
+```
+SELECT column_name(S)
+FROM table1 T1,table2 T2
+WHERE condition;
+```
+## T1 and T2 are different table aliases for the same table.
+```
+SELECT A.CustomerName AS CustomerName1, B.CustomerName AS CustomerNAME2, A.City 
+FROM Customers A, Customers B
+WHERE A.CustomerID <> B.CustomerID
+AND A.City = B.City
+ORDER BY A.City;
+```
+
+## SQL UNION Operator
