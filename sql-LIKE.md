@@ -404,4 +404,17 @@ FROM Products
  - Column names are big or not very readable
  - Two or more columns are combined together
  ![alt text](image.png)
- 
+
+ ## SQL Joins
+ [SQL Joins](https://www.w3schools.com/sql/sql_join.asp)
+
+ ## SQL JOIN 
+ A `JOIN` clause is used to combine rows from two or more tables, based on a realated column betwwen them.
+
+ Then, we can create the following SQL statement (that contains an `INNER JOIN`). that selects records that have matching values in both tables:
+ ```
+ SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+ FROM Orders
+ INNER JOIN Customers
+ ON Orders.CustomerID=Customers.CustomerID
+ ```
