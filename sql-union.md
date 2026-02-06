@@ -62,3 +62,13 @@ FROM Suppliers;
 
 ## An alias only exists for the duration of the query.
 So, here we have created a temporary column named "Type".
+
+## SQL Statement
+```
+SELECT City, Country FROM Customers
+WHERE Country='German'
+UNION
+SELECT City, Country FROM Suppliers
+WHERE Country='Germany'
+ORDER BY City;
+```
