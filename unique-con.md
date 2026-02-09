@@ -70,3 +70,53 @@ DROP CONSTRAINT UC_Person;
 ## SQL PRIMARY KEY Constraint
 [primary key constraint](https://www.w3schools.com/sql/sql_primarykey.asp)
 
+## SQL PRIMARY KEY ConstrAINT
+The `PRIMARY KEY` constraint is used to uniquely identify each record in a table.
+Primary keys must contain unique values, and cannot contain NULL values.
+Each table can have only ONE primary key. The primary key can be a single column or a combination of columns.
+
+## SQL PRIMARY KEY on CREATE TABLE
+The following SQL creates a `PRIMARY KEY` ON THE "ID" column when the "Persons" table is created:
+## MYSQL:
+```
+CREATE TABLE Persons(
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    PRIMARY KEY(ID)
+);
+```
+## SQL Server/Oracle/MS Access:
+```
+CREATE TABLE Persons(
+    ID int NOT NULL PRIMARY KEY,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int
+);
+```
+## To define a `PRIMARY KEY` constraint on multiple columns, use the following SQL syntax:
+## MySQL /SQL Server/Oracle /MS Access:
+```
+CREATE TABLE Persons(
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CONSTRAINT PK_Person PRIMARY KEY (ID,LastName)
+);
+```
+**Note**： If you use `ALTER TABLE` to add a primary key, the primary key column(S) must have been declared with NOT NULL, when the table was first created.
+## DROP a PRIMARY KEY Constraint
+To drop a `PRIMARY KEY` constraint, use the following SQL:
+## mysql:
+```
+ALTER TABLE Persons
+DROP PRIMARY KEY;
+```
+## sql server /Oracle / MS Access:
+```
+ALTER TABLE Persons
+DROP CONSTRATNT PK_Person;
+```
