@@ -121,3 +121,111 @@ DROP CONSTRAINT CHK_PersonAge;
 ALTER TABLE Persons
 DROP CHECK CHK_PersonAge;
 ```
+## SQL DEFAULT Constraint
+[default Constraint](https://www.w3schools.com/sql/sql_default.asp)
+
+## The `DEFAULT` constraunit is used to set a default value for a column.
+The default value will be added to all new records,if no other value is specified.
+## SQL DEFAULT on CREATE TABLE
+The following SQL sets a `DEFAULT` value for the ``
+## my sql/sql server/ oracle/ms access:
+```
+CREATE TABLE Persons(
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    City varchar(255) DEFAULT 'BEIJING`
+);
+```
+## INSERT SYSTEM VALUES
+```
+CREATE TABLE Orders(
+    ID int NOT NULL,
+    OrderNumber int NOT NULL,
+    OrderDate date DEFAULT GETDATE()
+);
+```
+## SQL DEFAULT on ALTER TABLE
+To create a `DEFAULT` constraint on the "city" column when the table is already created, use the following SQL:
+## MYSQL:
+```
+ALTER TABLE Persons
+ALTER City SET DEFAULT 'NEW YORK'
+```
+## sql sERVER
+````
+ALTER TABLE Persons
+ADD CONSTRAINT de_City
+DEFAULT 'HONGKONG' FRO City;
+````
+## MS ACCESS:
+```
+ALTER TABLE Persons
+ALTER COLUMN City SET DEFAULT 'haikou';
+```
+## Oracle:
+```
+ALTER TABLE Persons
+MODIFY City DEFULT  'NANCHANG';
+```
+## DROP a DEFAULT Constraint
+To drop a `DEFAULT` constraint , use the following SQL:
+## MYSQL":
+```
+ALTER TABLE Persons
+ALTER City DROP DEFAULT;
+```
+## SQL Server /Oracle/MS Access:
+```
+ALTER TABLE Persons
+ALTER COLUMN City DROP DEFAULT;
+```
+## SQL CREATE INDEX Statement
+[sql create index](https://www.w3schools.com/sql/sql_create_index.asp)
+
+The `CREATE INDEX` statement is used to create indexed in tables.
+
+notice: Indexes are used to retrieve data from the database more quickly than otherwise. The users cannot see the indexes, they are just used to speed up searches/queries.
+```
+NOTE: Updating a table with indexes takes more time than updating a table without(because the indexes also need an update). So, only create indexes on columns that will be frequently searched against.
+```
+## CREATE INDEX Syntax
+Creates an index on a table. Duplicate values are allowed:
+```
+CREATE INDEX index_name
+ON table_name (column1,colum2,...)
+```
+
+## CREATE UNIQUE INDEX Syntax
+Creates a unique index on a table . Duplicate values are not allowed:
+```
+CREATE UNIQUE INDEX     index_name
+ON table_name (column1, column2, ...)
+```
+
+If you want to create an index on a combination of columns, you can list the column names within the parenthese, separated by commas:
+```
+CREATE INDEX idx_pname
+ON Persons (LastName, FirstName);
+```
+## DROP INDEX Statement
+The `DROP INDEX` statement is used to delete an index in a table.
+## DROP INDEX Statement 
+ms access:
+```
+DROP INDEX index_name ON table_name;
+```
+SQL Server:
+```
+DROP INDEX table_name.index_name;
+```
+## DB2/Oracle:
+```
+DROP INDEX index_name;
+```
+## MySQL:
+```
+ALTER TABLE table_name
+DROP INDEX index_name
+```
