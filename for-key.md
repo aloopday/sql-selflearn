@@ -229,3 +229,72 @@ DROP INDEX index_name;
 ALTER TABLE table_name
 DROP INDEX index_name
 ```
+## SQL AUTO INCREMENT Field
+[SQL AUTO INCREMENT Field](https://www.w3schools.com/sql/sql_autoincrement.asp)
+
+## AUTO INCREMENT Field
+Auto-increment allows a unique number to be generated automatically when 
+a new record is inserted into a table.
+Often this is the primary key field that we would like to be created automatically every time a new record is inserted.
+## Syntax for MySQL
+
+```
+CREATE TABLE Persons (
+    Personid int NOT NULL AUTO_INCREMENT,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    PRIMARY KEY (Personid)
+);
+```
+MySQL USES the `AUTO_INCREMENT` keyword to perform an auto-increment feature.
+By default, the starting value for `AUTO_INCREMENT` is 1, and it will increment by q for each new record.
+To let the `AUTO_INCREMENT` sequence start with another value, the following SQL statement:
+```
+ALTER TABLE Persons AUTO_INCREMENT=100;
+```
+To insert a new record into the "Persons" table,we will NOT have to specify a value fo the "Personid" column (a unique value will be added automatically):
+```
+INSERT INTO Persons （FirstName,LastName)
+values('Lars','Monsen');
+```
+The "SQL " state,emt above would insert a new record into the "Persons" table.
+The "Personid" column would be assigned a unique value. The "FirstName" column would be set to "Lars" and "LastName" column would be set to "Monsen".
+## Syntax for SQL Server
+
+The following SQL statement defines the "Personid"
+```
+CREATE TABLE Persons(
+    Personid int IDENTITY(1,1) PRIMARY KEY,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int
+);
+```
+## Syntax for Access
+```
+CREATE TABLE Persons(
+    Personid AUTOINCREMENT(10,5) PRIMARY KEY,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int
+);
+```
+## Syntax for Oracle
+In Oracle the code is a little bit more tricky.
+You will have to create an auto-increment field with the sequence object(this
+object genereates a number sequence).
+Use the following `CREATE SEQUENCE` syntax:
+```
+CREATE SEQUENCE seq_person
+MINVALUE 1
+START WITH 1
+INCREMENT BY 1
+CACHE 10;
+```
+iT WILL ALSO  cache up to 10 values for performance. The cache option specifies how many sequence values will be stored in memory for faster access.
+To insert a new record into the "Persons" table, we will have to use the nextval function (this function retrieves the next value from seq_person sequence:0
+)
+```
+INSERT INTO Persons （Personid,FirstName,LastName)
+values(seq_person.nextval,'lars','Monsen');
