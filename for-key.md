@@ -53,3 +53,71 @@ to allow naming of a ```FOREIGN KEY``` constraint, and for defining a ```FOREIGN
 
 ## mysql/sql 
 [the check constraint](https://www.w3schools.com/sql/sql_check.asp)
+
+## SQL CHECK Constraint
+[CHECK Constraint](https://www.w3schools.com/sql/sql_check.asp)
+
+The `CHECK` constraint is used to limit the value range that can be placed in a column.
+If you define a `CHECK` constraint on a column it will allow only certain values for this column.
+## If you define a `CHECK` constraint on a table it can limit the values in certian
+columns based on values in other columns in the row.
+
+## SQL CHECK on CREATE TABLE
+The `CHECK` constraint ensures that the age of a person muste be 18, older:
+## MySQL:
+```
+CREATE TABLE Persons(
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CHECK (Age >=18)
+);
+```
+## SQL Server/Oracle/MS Access:
+```
+CREATE TABLE Persons(
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int CHECK (Age>=18)
+);
+```
+
+To allow naming of a `CHECK` constraint and for defining a `CHECK` constraint no multiple columns, use the following SQL syntax:
+MYSQL /SQL SERVER/ ORACLE/MS Access:
+```
+CREATE TABLE Persons(
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    City varchar(255),
+    CONSTRAINT CHK_Person CHECK (Age>=18 AND City='Sandnes')
+);
+```
+## SQL CHECK on ALTER TABLE
+
+## MYSQL/SQL SERVER /ORACLE/MS ACCESS:
+```
+ALTER TABLE Persons
+ADD CHECK (Age>18);
+```
+
+To allow naming of a `CHECK` constraint and for defining a  'CHECK` constraint on multiple columns, use the follwing SQL syntax:
+## MySQL/SQL Server/Oracle/MS Access
+```
+ALTER TABLE Persons
+ADD CONSTRAINT CHK_PersonAge CHECK (Age>=18 AND City ='Hong Kong ');
+```
+## DROP a CHECK Constraint
+sql server/oracle/ms access
+```
+ALTER TABLE Persons
+DROP CONSTRAINT CHK_PersonAge;
+```
+## MySQL:
+```
+ALTER TABLE Persons
+DROP CHECK CHK_PersonAge;
+```
